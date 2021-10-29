@@ -1,0 +1,3 @@
+[submodule "bc-lifehash"]
+	path = bc-lifehash
+	url = https://github.com/BlockchainCommons/bc-lifehash.git
