@@ -4,6 +4,26 @@
 
   let lifehash: LifeHashModule;
 
+  function randomItem<T>(items: ArrayLike<T>): T {
+    return items[Math.floor(Math.random() * items.length)];
+  }
+
+  function randomLetter(): string {
+    return randomItem("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
+  }
+
+  function randomLetterCluster(): string {
+    let result = '';
+    for(let i = 0; i < 3; i++) {
+      result += randomLetter();
+    }
+    return result;
+  }
+
+  function randomSeed(): string {
+    return randomLetterCluster() + '-' + randomLetterCluster();
+  }
+
   let updateDigestHex = (input: string) => {
     return "";
   };
@@ -13,6 +33,17 @@
   ): HTMLImageElement | null => {
     return null;
   };
+  let updateGallery = (version: LifeHashVersion, seeds: string[]) => {};
+  let gallerySeeds: string[] = [];
+
+  function reseed() {
+    let result: string[] = [];
+    for (let i = 0; i < 10; i++) {
+      result.push(randomSeed());
+    }
+    gallerySeeds = result;
+  }
+  reseed();
 
   const versions = [
     {
@@ -50,6 +81,7 @@
   let inputString = "Hello, world!";
   $: digestHex = updateDigestHex(inputString);
   $: image = updateImage(inputString, selectedVersion.version);
+  $: gallery = updateGallery(selectedVersion.version, gallerySeeds);
 
   (async () => {
     lifehash = await instantiate_lifehash();
@@ -71,6 +103,31 @@
       d.appendChild(result);
       return result;
     };
+    updateGallery = (version: LifeHashVersion, seeds: string[]) => {
+      let result: HTMLElement[] = [];
+      for (const seed of seeds) {
+        let div = document.createElement('div');
+
+        let upperDiv = document.createElement('div');
+        upperDiv.appendChild(lifehash.makeFromUTF8(seed, version, 3));
+
+        let lowerDiv = document.createElement('div');
+        lowerDiv.innerHTML = `${seed}`;
+
+        div.appendChild(upperDiv);
+        div.appendChild(lowerDiv);
+        div.style.display = 'inline-block';
+        div.style.margin = '5px';
+        div.style.textAlign = 'center';
+
+        result.push(div);
+      }
+      const d = document.getElementById("gallery");
+      d.textContent = "";
+      for (const item of result) {
+        d.appendChild(item);
+      }
+    };
   })();
 </script>
 
@@ -81,13 +138,17 @@
       <input bind:value={inputString} />
     </label>
     <p class="caption">
-      Edit this field to update the LifeHash image below. When using the library, the input can be a binary object of any size.
+      Edit this field to update the LifeHash image below. When using the
+      library, the input can be a binary object of any size.
     </p>
   </div>
-  <div><strong>SHA-256 Digest:</strong> <span class="data">{digestHex}</span>
-  <p class="caption">
-    This is the unique “fingerprint” of the input that is used as the seed for the LifeHash algorithm. Making even a tiny change to the input object above results in a complete change of the digest.
-  </p>
+  <div>
+    <strong>SHA-256 Digest:</strong> <span class="data">{digestHex}</span>
+    <p class="caption">
+      This is the unique “fingerprint” of the input that is used as the seed for
+      the LifeHash algorithm. Making even a tiny change to the input object
+      above results in a complete change of the digest.
+    </p>
   </div>
   <div>
     <label>
@@ -100,10 +161,15 @@
         {/each}
       </select>
     </label>
-    <p class="caption">About {selectedVersion.text}: {selectedVersion.description}</p>
+    <p class="caption">
+      About {selectedVersion.text}: {selectedVersion.description}
+    </p>
   </div>
   <strong>LifeHash:</strong>
   <div id="image" />
+  <strong>Gallery:</strong> <button on:click={reseed}>More</button>
+  <div id="gallery" />
+  <p class="caption">You can copy the strings beneath each icon to the input field above to reproduce the exact same LifeHash.</p>
 </main>
 
 <style>
