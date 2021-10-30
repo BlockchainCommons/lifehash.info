@@ -1,5 +1,5 @@
 <script lang="ts">
-  import HelloTest from "./lib/HelloTest.svelte";
+  import LifeHashDemo from "./lib/LifeHashDemo.svelte";
 
   let message: string;
 </script>
@@ -23,7 +23,7 @@
     </p>
   </div>
 
-  <HelloTest />
+  <LifeHashDemo />
 
   <h3 class="section">About <strong>LifeHash</strong></h3>
 
