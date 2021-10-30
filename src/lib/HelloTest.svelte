@@ -15,11 +15,34 @@
   };
 
   const versions = [
-    { version: LifeHashVersion.version1, text: "Version 1", description: "DEPRECATED. Uses HSB gamut. Not CMYK-friendly. Has some minor gradient bugs." },
-    { version: LifeHashVersion.version2, text: "Version 2", description: "CMYK-friendly gamut. Recommended for most purposes." },
-    { version: LifeHashVersion.detailed, text: "Detailed", description: "Double resolution. CMYK-friendly gamut." },
-    { version: LifeHashVersion.fiducial, text: "Fiducial", description: "Optimized for generating machine-vision fiducials. High-contrast. CMYK-friendly gamut." },
-    { version: LifeHashVersion.grayscaleFiducial, text: "Grayscale Fiducial", description: "Optimized for generating machine-vision fiducials. High-contrast." },
+    {
+      version: LifeHashVersion.version1,
+      text: "Version 1",
+      description:
+        "DEPRECATED. Uses HSB gamut. Not CMYK-friendly. Has some minor gradient bugs.",
+    },
+    {
+      version: LifeHashVersion.version2,
+      text: "Version 2",
+      description: "CMYK-friendly gamut. Recommended for most purposes.",
+    },
+    {
+      version: LifeHashVersion.detailed,
+      text: "Detailed",
+      description: "Double resolution. CMYK-friendly gamut.",
+    },
+    {
+      version: LifeHashVersion.fiducial,
+      text: "Fiducial",
+      description:
+        "Optimized for generating machine-vision fiducials. High-contrast. CMYK-friendly gamut.",
+    },
+    {
+      version: LifeHashVersion.grayscaleFiducial,
+      text: "Grayscale Fiducial",
+      description:
+        "Optimized for generating machine-vision fiducials. High-contrast for low-light conditions.",
+    },
   ];
 
   let selectedVersion = versions[1];
@@ -52,14 +75,23 @@
 </script>
 
 <main>
-  <label>
-    <strong>Input string:</strong>
-    <input bind:value={inputString} />
-  </label>
-  <p><strong>Digest:</strong> <span class="data">{digestHex}</span></p>
   <div>
     <label>
-      <strong>Version:</strong>
+      <strong>Input string:</strong>
+      <input bind:value={inputString} />
+    </label>
+    <p class="caption">
+      Edit this field to update the LifeHash image below. When using the library, the input can be a binary object of any size.
+    </p>
+  </div>
+  <div><strong>SHA-256 Digest:</strong> <span class="data">{digestHex}</span>
+  <p class="caption">
+    This is the unique “fingerprint” of the input that is used as the seed for the LifeHash algorithm. Making even a tiny change to the input object above results in a complete change of the digest.
+  </p>
+  </div>
+  <div>
+    <label>
+      <strong>LifeHash Version:</strong>
       <select bind:value={selectedVersion}>
         {#each versions as version}
           <option value={version}>
@@ -68,7 +100,7 @@
         {/each}
       </select>
     </label>
-    <p style="margin-top: 5px;">{selectedVersion.description}</p>
+    <p class="caption">About {selectedVersion.text}: {selectedVersion.description}</p>
   </div>
   <strong>LifeHash:</strong>
   <div id="image" />
@@ -80,6 +112,11 @@
     background: lightGray;
     width: 100%;
     padding: 10px;
+  }
+
+  .caption {
+    margin-top: 5px;
+    font-size: 10pt;
   }
 
   .data {
