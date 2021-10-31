@@ -78,7 +78,15 @@
 
   let selectedVersion = versions[1];
 
+
   let inputString = "Hello, world!";
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const queryString = urlParams.get('s');
+  if(queryString !== null) {
+    inputString = queryString;
+  }
+
   $: digestHex = updateDigestHex(inputString);
   $: image = updateImage(inputString, selectedVersion.version);
   $: gallery = updateGallery(selectedVersion.version, gallerySeeds);
