@@ -61,7 +61,7 @@
     symmetry and color to the icon to add beauty and quick recognizability.
   </p>
 
-  <h3 class="section">Watch the explainer video!</h3>
+  <h3 class="section">Watch the explainer video</h3>
 
   <a href="https://www.youtube.com/watch?v=cu0K__KLxKo" target="_blank"
     ><img src="title-card.jpg" alt="Explainer Video" style="width:100%; max-width: 600px" /></a
@@ -90,7 +90,7 @@
   main h1 {
     font-family: Urbanist, sans-serif;
     font-weight: 800;
-    color: #555;
+    color: #333;
   }
 
   main h2 {

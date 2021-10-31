@@ -112,7 +112,13 @@
         upperDiv.appendChild(lifehash.makeFromUTF8(seed, version, 3));
 
         let lowerDiv = document.createElement('div');
-        lowerDiv.innerHTML = `${seed}`;
+        let lowerSpan = document.createElement('a');
+        lowerDiv.appendChild(lowerSpan);
+        lowerSpan.innerText = seed;
+        lowerSpan.style.fontFamily = 'monospace';
+        lowerSpan.style.fontSize = '12pt';
+        lowerSpan.style.fontWeight = 'bold';
+        lowerSpan.onclick = () => { inputString = seed; };
 
         div.appendChild(upperDiv);
         div.appendChild(lowerDiv);
@@ -167,9 +173,9 @@
   </div>
   <strong>LifeHash:</strong>
   <div id="image" />
-  <strong>Gallery:</strong> <button on:click={reseed}>More</button>
+  <strong>Gallery:</strong> <button class="reload" on:click={reseed}>↻ More</button>
   <div id="gallery" />
-  <p class="caption">You can copy the strings beneath each icon to the input field above to reproduce the exact same LifeHash.</p>
+  <p class="caption">You can click on the strings beneath each icon to set the input field above, reproducing the exact same LifeHash.</p>
 </main>
 
 <style>
@@ -190,5 +196,15 @@
     font-size: 12pt;
     word-wrap: break-word;
     display: block;
+  }
+
+  button.reload {
+    border: none;
+    background-color: transparent;
+    font-weight: bold;
+  }
+
+  button.reload:active {
+    background-color: gray;
   }
 </style>
