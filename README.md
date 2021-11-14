@@ -6,7 +6,7 @@ This page is a demonstration of running the [LifeHash](https://github.com/Blockc
 
 You can access this page's URL with a query parameter to populate the string input field with a specific value. Example:
 
-[https://blockchaincommons.github.io/lifehash-web/?s=RBH-AOZ](https://blockchaincommons.github.io/lifehash-web/?s=RBH-AOZ)
+[https://lifehash.info?s=RBH-AOZ](https://lifehash.info?s=RBH-AOZ)
 
 ## Installation
 
