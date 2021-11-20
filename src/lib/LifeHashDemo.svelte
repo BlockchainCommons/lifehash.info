@@ -110,7 +110,7 @@
       div.innerHTML = '';
 
       if (digestBytes !== null) {
-        let result = lifehash.makeFromDigest(digestBytes, version, 4);
+        let result = lifehash.makeFromDigest(digestBytes, version, 6);
         result.style.margin = '5px';
         div.appendChild(result);
       }
