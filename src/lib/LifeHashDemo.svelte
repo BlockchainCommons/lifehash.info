@@ -1,116 +1,121 @@
 <script lang="ts">
-  import instantiate_lifehash, { LifeHashModule } from "./lifehash.js";
-  import { LifeHashVersion } from "./lifehash.types";
+  import instantiate_lifehash, { LifeHashModule } from './lifehash.js';
+  import { LifeHashVersion } from './lifehash.types';
 
   let lifehash: LifeHashModule;
 
-  function randomItem<T>(items: ArrayLike<T>): T {
-    return items[Math.floor(Math.random() * items.length)];
-  }
-
-  function randomLetter(): string {
-    return randomItem("ABCDEFGHIJKLMNOPQRSTUVWXYZ");
-  }
-
-  function randomLetterCluster(): string {
-    let result = '';
-    for(let i = 0; i < 3; i++) {
-      result += randomLetter();
-    }
-    return result;
-  }
-
-  function randomSeed(): string {
-    return randomLetterCluster() + '-' + randomLetterCluster();
-  }
-
-  let updateDigestHex = (input: string) => {
-    return "";
+  const inputModeString = {
+    sourceIsString: true,
+    text: 'UTF-8 string',
   };
-  let updateImage = (
-    input: string,
-    version: LifeHashVersion
-  ): HTMLImageElement | null => {
-    return null;
-  };
-  let updateGallery = (version: LifeHashVersion, seeds: string[]) => {};
-  let gallerySeeds: string[] = [];
 
-  function reseed() {
-    let result: string[] = [];
-    for (let i = 0; i < 10; i++) {
-      result.push(randomSeed());
-    }
-    gallerySeeds = result;
-  }
-  reseed();
+  const inputModeDigest = {
+    sourceIsString: false,
+    text: 'SHA-256 digest',
+  };
+
+  const inputModes = [inputModeString, inputModeDigest];
 
   const versions = [
     {
       version: LifeHashVersion.version1,
-      text: "Version 1",
+      text: 'Version 1',
       description:
-        "DEPRECATED. Uses HSB gamut. Not CMYK-friendly. Has some minor gradient bugs.",
+        'DEPRECATED. Uses HSB gamut. Not CMYK-friendly. Has some minor gradient bugs.',
     },
     {
       version: LifeHashVersion.version2,
-      text: "Version 2",
-      description: "CMYK-friendly gamut. Recommended for most purposes.",
+      text: 'Version 2',
+      description: 'CMYK-friendly gamut. Recommended for most purposes.',
     },
     {
       version: LifeHashVersion.detailed,
-      text: "Detailed",
-      description: "Double resolution. CMYK-friendly gamut.",
+      text: 'Detailed',
+      description: 'Double resolution. CMYK-friendly gamut.',
     },
     {
       version: LifeHashVersion.fiducial,
-      text: "Fiducial",
+      text: 'Fiducial',
       description:
-        "Optimized for generating machine-vision fiducials. High-contrast. CMYK-friendly gamut.",
+        'Optimized for generating machine-vision fiducials. High-contrast. CMYK-friendly gamut.',
     },
     {
       version: LifeHashVersion.grayscaleFiducial,
-      text: "Grayscale Fiducial",
+      text: 'Grayscale Fiducial',
       description:
-        "Optimized for generating machine-vision fiducials. High-contrast for low-light conditions.",
+        'Optimized for generating machine-vision fiducials. High-contrast for low-light conditions.',
     },
   ];
 
   let selectedVersion = versions[1];
+  let inputString = 'Hello, world!';
+  let inputDigestHex = '';
+  let sourceDigestHex = '';
+  let sourceDigestBytes: Uint8Array | null;
+  let inputMode = inputModeString;
 
+  let inputStringChanged = (inputString: string): void => {};
+  let inputDigestChanged = (inputDigest: string): void => {};
+  let updateImage = (
+    digestBytes: Uint8Array,
+    version: LifeHashVersion
+  ): void => {};
+  let updateGallery = (version: LifeHashVersion, seeds: string[]): void => {};
 
-  let inputString = "Hello, world!";
+  $: inputStringChanged(inputString);
+  $: inputDigestChanged(inputDigestHex);
+  $: updateImage(sourceDigestBytes, selectedVersion.version);
+  $: updateGallery(selectedVersion.version, gallerySeeds);
+
+  let gallerySeeds: string[] = [];
+  reseed();
 
   const urlParams = new URLSearchParams(window.location.search);
   const queryString = urlParams.get('s');
-  if(queryString !== null) {
+  console.log(queryString);
+  if (queryString !== null) {
     inputString = queryString;
+    inputMode = inputModeString;
+  } else {
+    const queryString = urlParams.get('d');
+    console.log(queryString);
+    if (queryString !== null) {
+      inputDigestHex = queryString;
+      inputMode = inputModeDigest;
+    }
   }
-
-  $: digestHex = updateDigestHex(inputString);
-  $: image = updateImage(inputString, selectedVersion.version);
-  $: gallery = updateGallery(selectedVersion.version, gallerySeeds);
 
   (async () => {
     lifehash = await instantiate_lifehash();
 
-    updateDigestHex = (input: string) => {
-      return lifehash.dataToHex(lifehash.sha256(inputString));
-    };
-    updateImage = (
-      input: string,
-      version: LifeHashVersion
-    ): HTMLImageElement | null => {
-      let result = lifehash.makeFromUTF8(input, version, 4);
-      result.style.margin = "5px";
-      const d = document.getElementById("image");
-      const old = d.firstChild;
-      if (old !== null) {
-        d.removeChild(old);
+    inputStringChanged = (inputString: string) => {
+      if (inputMode === inputModeString) {
+        const hex = lifehash.dataToHex(lifehash.sha256(inputString));
+        inputDigestHex = hex;
       }
-      d.appendChild(result);
-      return result;
     };
+
+    inputDigestChanged = (inputDigest: string) => {
+      sourceDigestHex = inputDigest;
+      const digest = lifehash.hexToData(sourceDigestHex);
+      if (digest === null || digest.length !== 32) {
+        sourceDigestBytes = null;
+      } else {
+        sourceDigestBytes = digest;
+      }
+    };
+
+    updateImage = (digestBytes: Uint8Array, version: LifeHashVersion) => {
+      const div = document.getElementById('image');
+      div.innerHTML = '';
+
+      if (digestBytes !== null) {
+        let result = lifehash.makeFromDigest(digestBytes, version, 4);
+        result.style.margin = '5px';
+        div.appendChild(result);
+      }
+    };
+
     updateGallery = (version: LifeHashVersion, seeds: string[]) => {
       let result: HTMLElement[] = [];
       for (const seed of seeds) {
@@ -126,7 +131,10 @@
         lowerSpan.style.fontFamily = 'monospace';
         lowerSpan.style.fontSize = '12pt';
         lowerSpan.style.fontWeight = 'bold';
-        lowerSpan.onclick = () => { inputString = seed; };
+        lowerSpan.onclick = () => {
+          inputMode = inputModeString;
+          inputString = seed;
+        };
 
         div.appendChild(upperDiv);
         div.appendChild(lowerDiv);
@@ -136,34 +144,98 @@
 
         result.push(div);
       }
-      const d = document.getElementById("gallery");
-      d.textContent = "";
+      const d = document.getElementById('gallery');
+      d.textContent = '';
       for (const item of result) {
         d.appendChild(item);
       }
     };
   })();
+
+  function randomItem<T>(items: ArrayLike<T>): T {
+    return items[Math.floor(Math.random() * items.length)];
+  }
+
+  function randomLetter(): string {
+    return randomItem('ABCDEFGHIJKLMNOPQRSTUVWXYZ');
+  }
+
+  function randomLetterCluster(): string {
+    let result = '';
+    for (let i = 0; i < 3; i++) {
+      result += randomLetter();
+    }
+    return result;
+  }
+
+  function randomSeed(): string {
+    return randomLetterCluster() + '-' + randomLetterCluster();
+  }
+
+  function reseed() {
+    let result: string[] = [];
+    for (let i = 0; i < 10; i++) {
+      result.push(randomSeed());
+    }
+    gallerySeeds = result;
+  }
 </script>
 
 <main>
-  <div>
+  <div style="margin-bottom: 20px;">
     <label>
-      <strong>Input string:</strong>
-      <input bind:value={inputString} />
+      <strong>Create Lifehash using a:</strong>
+      <select bind:value={inputMode}>
+        {#each inputModes as inputMode}
+          <option value={inputMode}>
+            {inputMode.text}
+          </option>
+        {/each}
+      </select>
     </label>
-    <p class="caption">
-      Edit this field to update the LifeHash image below. When using the
-      library, the input can be a binary object of any size.
-    </p>
   </div>
-  <div>
-    <strong>SHA-256 Digest:</strong> <span class="data">{digestHex}</span>
-    <p class="caption">
-      This is the unique “fingerprint” of the input that is used as the seed for
-      the LifeHash algorithm. Making even a tiny change to the input object
-      above results in a complete change of the digest.
-    </p>
-  </div>
+  {#if inputMode.sourceIsString}
+    <div>
+      <label>
+        <strong>Input string:</strong>
+        <input bind:value={inputString} spellcheck="false" />
+      </label>
+      <p class="caption">
+        Edit this field to update the LifeHash image below. When using the
+        library, the input can be a binary object of any size.
+      </p>
+    </div>
+    <div>
+      <strong>SHA-256 Digest:</strong>
+      <span class="data">{sourceDigestHex}</span>
+      <p class="caption">
+        This is the unique “fingerprint” of the input that is used as the seed
+        for the LifeHash algorithm. Making even a tiny change to the input
+        string above results in a complete change of the digest.
+      </p>
+    </div>
+  {:else}
+    <div>
+      <label style="width: 100%;">
+        <strong>Input SHA-256 Digest:</strong><br />
+        <textarea
+          bind:value={inputDigestHex}
+          class="data"
+          spellcheck="false"
+          rows="1"
+          style="width: 100%;"
+        />
+      </label>
+      {#if sourceDigestBytes === null}
+        <div class="error">Invalid digest.</div>
+      {/if}
+      <p class="caption">
+        This is the unique “fingerprint” of the input that is used as the seed
+        for the LifeHash algorithm. It must be exactly 64 hexadecimal digits
+        produced by the SHA-256 algorithm.
+      </p>
+    </div>
+  {/if}
   <div>
     <label>
       <strong>LifeHash Version:</strong>
@@ -181,9 +253,16 @@
   </div>
   <strong>LifeHash:</strong>
   <div id="image" />
-  <strong>Gallery:</strong> <button class="reload" on:click={reseed}>↻ More</button>
+  {#if sourceDigestBytes === null}
+    <div class="error">Invalid digest.</div>
+  {/if}
+  <strong>Gallery:</strong>
+  <button class="reload" on:click={reseed}>↻ More</button>
   <div id="gallery" />
-  <p class="caption">You can click on the strings beneath each icon to set the input field above, reproducing the exact same LifeHash.</p>
+  <p class="caption">
+    You can click on the strings beneath each icon to set the input string,
+    reproducing the exact same LifeHash.
+  </p>
 </main>
 
 <style>
@@ -204,6 +283,11 @@
     font-size: 12pt;
     word-wrap: break-word;
     display: block;
+  }
+
+  .error {
+    color: red;
+    font-weight: bold;
   }
 
   button.reload {
