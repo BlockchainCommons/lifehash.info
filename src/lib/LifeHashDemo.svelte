@@ -26,7 +26,7 @@
     {
       version: LifeHashVersion.version2,
       text: 'Version 2',
-      description: 'CMYK-friendly gamut. Recommended for most purposes.',
+      description: 'The official LifeHash. Recommended for most purposes. CMYK-friendly gamut.',
     },
     {
       version: LifeHashVersion.detailed,
@@ -123,6 +123,10 @@
 
         let upperDiv = document.createElement('div');
         upperDiv.appendChild(lifehash.makeFromUTF8(seed, version, 3));
+        upperDiv.onclick = () => {
+          inputMode = inputModeString;
+          inputString = seed;
+        };
 
         let lowerDiv = document.createElement('div');
         let lowerSpan = document.createElement('a');
@@ -252,17 +256,17 @@
     </p>
   </div>
   <strong>LifeHash:</strong>
-  <div id="image" />
+  <div id="image" style="margin-bottom: 20px;" />
   {#if sourceDigestBytes === null}
     <div class="error">Invalid digest.</div>
   {/if}
-  <strong>Gallery:</strong>
-  <button class="reload" on:click={reseed}>↻ More</button>
-  <div id="gallery" />
+
+  <div><strong>Gallery:</strong><button class="reload" on:click={reseed}>↻ More</button></div>
   <p class="caption">
-    You can click on the strings beneath each icon to set the input string,
+    Click on the icons below to set the input string,
     reproducing the exact same LifeHash.
   </p>
+  <div id="gallery" />
 </main>
 
 <style>
