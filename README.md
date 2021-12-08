@@ -5,16 +5,16 @@
 ### _by [Wolf McNally](https://www.github.com/wolfmcnally) and [Christopher Allen](https://www.github.com/ChristopherA)_
 
 <a href="https://lifehash.info"><img src="https://raw.githubusercontent.com/BlockchainCommons/lifehash.info/shannona-lifehash-nexus/Nexus-Images/lifehash-info.png" align="right" width=400></a>
-This is a central repo for LifeHash, a method of visual hash visualization that creates beautiful, determinstic icons.
+This is a central repo for LifeHash, a method of visual hash visualization that creates beautiful, deterministic icons.
 <br><br>
 
-It also contains the data for our [lifehash.info](https://lifehash.info) demonstration site for LifeHash, which uses our reference C++ implementation of LifeHash compiled to [WebAssembly](https://webassembly.org/). The page itself can be accessed [here](http://lifehash.info).
+It also contains the data for our [lifehash.info](https://lifehash.info) demonstration site for LifeHash, which uses our [reference C++ implementation of LifeHash](https://github.com/BlockchainCommons/bc-lifehash) compiled to [WebAssembly](https://webassembly.org/). The page itself can be accessed [here](http://lifehash.info).
 
 ## Overview
 
 LifeHash is a method of hash visualization based on Conway's Game of Life that creates beautiful icons that are deterministic, yet distinct and unique given the input data.
 
-The basic concept is to take a SHA256 hash of the input data (which can be any data including another hash) and then use the 256-bit digest as a 16x16 pixel "seed" for running the cellular automata known as [Conway’s Game of Life](https://en.wikipedia.org/wiki/Conway's_Game_of_Life).
+The basic concept is to take a SHA-256 hash of the input data (which can be any data including another hash) and then use the 256-bit digest as a 16x16 pixel "seed" for running the cellular automata known as [Conway’s Game of Life](https://en.wikipedia.org/wiki/Conway's_Game_of_Life).
 
 After the pattern becomes stable (or begins repeating) the resulting history is used to compile a grayscale image of all the states from the first to last generation. Using Game of Life provides visual structure to the resulting image, even though it was seeded with entropy.
 
@@ -35,7 +35,7 @@ The following files contain more information about LifeHash:
 
 ## Implementations
 
-Reference libraries are available in a variety of libraries. The C/C++ implementation considered the "canonical" implementation and should be suitable for binding to other languages such as Java, Python, and cross-compilation into WebAssembly. In order to work from a single main codebase, we expect that implementation to eventually replace the pure Swift implementation.
+Reference libraries are available in a variety of libraries. The C/C++ implementation considered the "canonical" implementation and should be suitable for binding to other languages such as Java and Python and cross-compilation into WebAssembly. In order to work from a single main codebase, we expect that implementation to eventually replace the pure Swift implementation.
 
 | Type | Name | Language | Note |
 |------|------|----------|------|
@@ -45,7 +45,7 @@ Reference libraries are available in a variety of libraries. The C/C++ implement
 
 ## Command-Line Tools
 
-Command-line tools demonstrate our reference libraries by generating LifeHash images as PNG files.
+Command-line reference tools demonstrate our  libraries by generating LifeHash images as PNG files.
 
 | Name | Language |
 |-----|-----|
@@ -54,11 +54,11 @@ Command-line tools demonstrate our reference libraries by generating LifeHash im
 
 ## Gordian Principles
 
-**LifeHash** is a reference specification meant to display the [Gordian Principles](https://github.com/BlockchainCommons/Gordian#gordian-principles), which are philosophical and technical underpinnings to Blockchain Commons' Gordian technology. This includes:
+**LifeHash** is a specification meant to display the [Gordian Principles](https://github.com/BlockchainCommons/Gordian#gordian-principles), which are philosophical and technical underpinnings to Blockchain Commons' Gordian technology. This includes:
 
 * **Independence.** LifeHash allows you to personally verify data, rather than depending entirely on applications.
 * **Privacy.** LifeHash improves your privacy by allowing identification through [functional identity](https://github.com/WebOfTrustInfo/rwot9-prague/blob/master/topics-and-advance-readings/functional-identity-primer.md).
-* **Resilience.** LifeHash helps to protect from scams built on fake data.
+* **Resilience.** LifeHash helps to protect from scams built on unverified fake data.
 * **Openness.** LifeHash is an open specification.
 
 ## Installation Instructions
@@ -80,16 +80,15 @@ npm run dev
 
 The [LifeHash.info website](https://lifehash.info) allows you to view LifeHashes for UTF-8 strings and SHA-256 hashes, which you can enter on the page itself, or request through a URL.
 
-### Displaying a Specific LifeHash
+### Requesting a Specific LifeHash
 
-You can use a `s=` query parameter to populate the string input field with a specific value. For example:
+You can use a `s=` query parameter in the URL to populate the string input field with a specific value. For example:
 
 [http://lifehash.info?s=RBH-AOZ](http://lifehash.info?s=RBH-AOZ)
 
-If you want to generate a LifeHash directly from a SHA-256 digest, you can use a `f=` query parameter:
+If you want to generate a LifeHash directly from a SHA-256 digest, you can use a `f=` query parameter in the URL:
 
 [http://lifehash.info?f=70b0db749f1cb026282693b236048cefa3395fc580e91b7c62666b0bdc97c0e3](http://lifehash.info?f=70b0db749f1cb026282693b236048cefa3395fc580e91b7c62666b0bdc97c0e3)
-
 
 ## Origin, Authors, Copyright & Licenses
 
