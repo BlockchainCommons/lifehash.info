@@ -4,7 +4,7 @@
 
 ### _by [Wolf McNally](https://www.github.com/wolfmcnally) and [Christopher Allen](https://www.github.com/ChristopherA)_
 
-<img src="https://raw.githubusercontent.com/BlockchainCommons/lifehash.info/shannona-lifehash-nexus/Nexus-Images/lifehash-info.png" align="right" width=400>
+<a href="https://lifehash.info"><img src="https://raw.githubusercontent.com/BlockchainCommons/lifehash.info/shannona-lifehash-nexus/Nexus-Images/lifehash-info.png" align="right" width=400></a>
 This is a central repo for LifeHash, a method of visual hash visualization that creates beautiful, determinstic icons.
 <br><br>
 
