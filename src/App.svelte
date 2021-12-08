@@ -5,7 +5,7 @@
 </script>
 
 <main>
-  <img src="https://github.com/BlockchainCommons/lifehash.info/blob/master/Nexus-Images/logos/lifehash-logo.png" alt="LifeHash">
+  <h1>LifeHash</h1>
   <h2>Beautiful Visual Hashes</h2>
   <h3>
     from <a href="https://www.blockchaincommons.com/" target="_blank"
