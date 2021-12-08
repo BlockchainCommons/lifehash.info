@@ -87,11 +87,11 @@
     text-decoration: none;
   }
 
-  main h1 {
+  /* main h1 {
     font-family: Urbanist, sans-serif;
     font-weight: 800;
     color: #333;
-  }
+  } */
 
   main h2 {
     font-family: Urbanist, sans-serif;
