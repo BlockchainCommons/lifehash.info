@@ -62,7 +62,7 @@ Command-line reference tools demonstrate our  libraries by generating LifeHash i
 * **Resilience.** LifeHash helps to protect from scams built on unverified fake data.
 * **Openness.** LifeHash is an open specification.
 
-## Installation Instructions
+## LifeHash.info Demo Installation Instructions
 
 To install your own copy of the [LifeHash.info website](https://lifehash.info):
 
@@ -77,7 +77,7 @@ npm install
 npm run dev
 ```
 
-## Usage Instructions
+## LifeHash.Info Demo Usage Instructions
 
 The [LifeHash.info website](https://lifehash.info) allows you to view LifeHashes for UTF-8 strings and SHA-256 hashes, which you can enter on the page itself, or request through a URL.
 
