@@ -5,7 +5,7 @@
 </script>
 
 <main>
-  <img src="lifehash-logo.png" alt="LifeHash" width=500>
+  <img src="lifehash-logo.png" alt="LifeHash" width=500 style="max-width: 50%; margin-bottom: 0.3em;">
   <h2>Beautiful Visual Hashes</h2>
   <h3>
     from <a href="https://www.blockchaincommons.com/" target="_blank"
