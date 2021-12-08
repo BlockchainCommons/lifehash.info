@@ -7,7 +7,7 @@
 <img src="https://raw.githubusercontent.com/BlockchainCommons/lifehash.info/shannona-lifehash-nexus/Nexus-Images/lifehash-info.png" align="right" width=400>
 This is a central repo for LifeHash, a method of hash visualization based on Conway’s Game of Life that creates beautiful icons that are deterministic, yet distinct and unique given the input data.
 
-It also contains the data for our [lifehash.info](https://lifehash.info) demonstration site for LifeHash, which uses our reference C++ implementation ofe LifeHashv compiled to [WebAssembly](https://webassembly.org/). The page itself can be accessed [here](http://lifehash.info).
+It also contains the data for our [lifehash.info](https://lifehash.info) demonstration site for LifeHash, which uses our reference C++ implementation of LifeHash compiled to [WebAssembly](https://webassembly.org/). The page itself can be accessed [here](http://lifehash.info).
 
 ## Additional Information
 
