@@ -47,6 +47,7 @@ Reference libraries are available in a variety of libraries. The C/C++ implement
 Command-line tools demonstrate our reference libraries by generating LifeHash images as PNG files.
 
 | Name | Language |
+|-----|-----|
 | [lifehash-cli](https://github.com/BlockchainCommons/bc-lifehash-cli) | C++ |
 | [LifeHashTool](https://github.com/BlockchainCommons/LifeHashTool) | Swift |
 
