@@ -101,7 +101,7 @@ If you want to generate a LifeHash directly from a SHA-256 digest, you can use a
 
 "LifeHash Gallery" shows an elegant, artistic presentation of various collections of LifeHashes that automatically change every ten seconds. The latest version shows `.version2`, `.detailed`, and `.fiducial` LifeHashes.
 
-![LifeHash Gallery](Nexus-Images/gallery-example-1.jpeg | width=750)
+![LifeHash Gallery](Nexus-Images/gallery-example-1.jpeg =750)
 
 ## Origin, Authors, Copyright & Licenses
 
