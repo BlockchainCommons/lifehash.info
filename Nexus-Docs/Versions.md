@@ -3,7 +3,7 @@
 LifeHashes can be displayed in one of five ways (one of which is deprecated:
 
 * **`version1`** The Original. **DEPRECATED**
-* **`version2`** Bug fixes and CMYK-friendly.
+* **`version2`** Bug fixes and CMYK-friendly. The **OFFICIAL** version of LifeHash.
 * **`detailed`** Now with twice the resolution, and CMYK-friendly.
 * **`fiducial`** [Fiducials](https://en.wikipedia.org/wiki/Fiducial_marker#Fiducial_marker_sets) are symbols specifically optimized for recognition by machine vision algorithms like those in Apple's [ARKit](https://developer.apple.com/augmented-reality/arkit/). Now CMYK-friendly.
 * **`grayscaleFiducial`** Highest contrast for low-light situations.
@@ -13,7 +13,7 @@ LifeHashes can be displayed in one of five ways (one of which is deprecated:
 ### Version 1 (DEPRECATED)
 ![LifeHash Example](../Nexus-Images/version1.jpeg)
 
-### Version 2
+### Version 2 (OFFICIAL)
 ![LifeHash Example](../Nexus-Images/version2.jpeg)
 
 ### Detailed
