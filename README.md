@@ -32,6 +32,7 @@ The following files contain more information about LifeHash:
 
 * [**Use Cases**](https://github.com/BlockchainCommons/lifehash.info/blob/shannona-lifehash-nexus/Nexus-Docs/Use-Cases.md) — Why use LifeHash?
 * [**Tips**](Nexus-Docs/Tips.md) — Advice for presenting and using LifeHashes.
+* [**LifeHashes in Five Flavors](Nexus-Docs/Versions.md) — Five different ways to present LifeHashes.
 
 ## Implementations
 
@@ -89,6 +90,18 @@ You can use a `s=` query parameter in the URL to populate the string input field
 If you want to generate a LifeHash directly from a SHA-256 digest, you can use a `f=` query parameter in the URL:
 
 [http://lifehash.info?f=70b0db749f1cb026282693b236048cefa3395fc580e91b7c62666b0bdc97c0e3](http://lifehash.info?f=70b0db749f1cb026282693b236048cefa3395fc580e91b7c62666b0bdc97c0e3)
+
+## Samples from the "LifeHash Example" demo app:
+
+"LifeHash Example" (part of the Swift implementation) lets you scroll through an endless table of LifeHashes generated from sequential integers, and tap on any of them to get a closer look. The selector at the top lets you choose to browse `.version2`, `.detailed`, `.fiducial`, and `.grayscaleFiducial` LifeHashes.
+
+![LifeHash Example](Nexus-Images/Samples-0.jpg?raw=true "Samples 0") ![Samples of LifeHash](Nexus-Images/Samples-Fiducials-0.jpg?raw=true "Samples Fiducial 0")
+
+## Samples From the "LifeHash Gallery" demo app:
+
+"LifeHash Gallery" shows an elegant, artistic presentation of various collections of LifeHashes that automatically change every ten seconds. The latest version shows `.version2`, `.detailed`, and `.fiducial` LifeHashes.
+
+![LifeHash Gallery](Nexus-Images/gallery-example-1.jpg?raw=true "Samples 0")
 
 ## Origin, Authors, Copyright & Licenses
 
