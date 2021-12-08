@@ -22,7 +22,7 @@ Some bits of the initial hash are then used to deterministically apply symmetry 
 
 View the LifeHash explainer video for more details:
 
-[![LifeHash Explainer on YouTube](Nexus-Images/title-card.jpg)](https://www.youtube.com/watch?v=cu0K__KLxKo)
+[![LifeHash Explainer on YouTube](Nexus-Images/title-card.jpeg)](https://www.youtube.com/watch?v=cu0K__KLxKo)
 
 See a LifeHash demo at [LifeHash.info](https://lifehash.info/).
 
