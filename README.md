@@ -95,13 +95,13 @@ If you want to generate a LifeHash directly from a SHA-256 digest, you can use a
 
 "LifeHash Example" (part of the Swift implementation) lets you scroll through an endless table of LifeHashes generated from sequential integers, and tap on any of them to get a closer look. The selector at the top lets you choose to browse `.version2`, `.detailed`, `.fiducial`, and `.grayscaleFiducial` LifeHashes.
 
-![LifeHash Example](Nexus-Images/Samples-0.jpg?raw=true "Samples 0") ![Samples of LifeHash](Nexus-Images/Samples-Fiducials-0.jpg?raw=true "Samples Fiducial 0")
+![LifeHash Example](Nexus-Images/Samples-0.jpeg?raw=true "Samples 0") ![Samples of LifeHash](Nexus-Images/Samples-Fiducials-0.jpeg?raw=true "Samples Fiducial 0")
 
 ## Samples From the "LifeHash Gallery" demo app:
 
 "LifeHash Gallery" shows an elegant, artistic presentation of various collections of LifeHashes that automatically change every ten seconds. The latest version shows `.version2`, `.detailed`, and `.fiducial` LifeHashes.
 
-![LifeHash Gallery](Nexus-Images/gallery-example-1.jpg?raw=true "Samples 0")
+![LifeHash Gallery](Nexus-Images/gallery-example-1.jpeg?raw=true "Samples 0")
 
 ## Origin, Authors, Copyright & Licenses
 
