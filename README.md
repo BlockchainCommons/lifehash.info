@@ -5,10 +5,10 @@
 ### _by [Wolf McNally](https://www.github.com/wolfmcnally) and [Christopher Allen](https://www.github.com/ChristopherA)_
 
 <a href="https://lifehash.info"><img src="Nexus-Images/lifehash-info.png" align="right" width=400></a>
-This is a central repo for LifeHash, a method of visual hash visualization that creates beautiful, deterministic icons.
+This is a central repo for LifeHash, a method of hash visualization that creates beautiful, deterministic icons.
 <br><br>
 
-It also contains the data for our [lifehash.info](https://lifehash.info) demonstration site for LifeHash, which uses our [reference C++ implementation of LifeHash](https://github.com/BlockchainCommons/bc-lifehash) compiled to [WebAssembly](https://webassembly.org/). The page itself can be accessed [here](http://lifehash.info).
+It also contains the code for our [lifehash.info](https://lifehash.info) demonstration site for LifeHash, which uses our [reference C++ implementation of LifeHash](https://github.com/BlockchainCommons/bc-lifehash) compiled to [WebAssembly](https://webassembly.org/). The page itself can be accessed [here](http://lifehash.info).
 
 ## Overview
 
@@ -30,7 +30,7 @@ See a LifeHash demo at [LifeHash.info](https://lifehash.info/).
 
 The following files contain more information about LifeHash:
 
-* [Use Cases](https://github.com/BlockchainCommons/lifehash.info/blob/shannona-lifehash-nexus/Nexus-Docs/Use-Cases.md) — Why use LifeHash?
+* [Use Cases](Nexus-Docs/Use-Cases.md) — Why use LifeHash?
 * [Tips](Nexus-Docs/Tips.md) — Advice for presenting and using LifeHashes.
 * [LifeHashes in Five Flavors](Nexus-Docs/Versions.md) — Five different ways to present LifeHashes.
 
@@ -87,9 +87,9 @@ You can use a `s=` query parameter in the URL to populate the string input field
 
 [http://lifehash.info?s=RBH-AOZ](http://lifehash.info?s=RBH-AOZ)
 
-If you want to generate a LifeHash directly from a SHA-256 digest, you can use a `f=` query parameter in the URL:
+If you want to generate a LifeHash directly from a SHA-256 digest, you can use a `d=` query parameter in the URL:
 
-[http://lifehash.info?f=70b0db749f1cb026282693b236048cefa3395fc580e91b7c62666b0bdc97c0e3](http://lifehash.info?f=70b0db749f1cb026282693b236048cefa3395fc580e91b7c62666b0bdc97c0e3)
+[http://lifehash.info?d=70b0db749f1cb026282693b236048cefa3395fc580e91b7c62666b0bdc97c0e3](http://lifehash.info?d=70b0db749f1cb026282693b236048cefa3395fc580e91b7c62666b0bdc97c0e3)
 
 ## Samples from the "LifeHash Example" demo app:
 
