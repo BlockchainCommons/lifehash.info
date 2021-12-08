@@ -5,10 +5,26 @@
 ### _by [Wolf McNally](https://www.github.com/wolfmcnally) and [Christopher Allen](https://www.github.com/ChristopherA)_
 
 <img src="https://raw.githubusercontent.com/BlockchainCommons/lifehash.info/shannona-lifehash-nexus/Nexus-Images/lifehash-info.png" align="right" width=400>
-This is a central repo for LifeHash, a method of hash visualization based on Conway’s Game of Life that creates beautiful icons that are deterministic, yet distinct and unique given the input data.
+This is a central repo for LifeHash, a method of visual hash visualization that creates beautiful, determinstic icons.
 <br><br>
 
 It also contains the data for our [lifehash.info](https://lifehash.info) demonstration site for LifeHash, which uses our reference C++ implementation of LifeHash compiled to [WebAssembly](https://webassembly.org/). The page itself can be accessed [here](http://lifehash.info).
+
+## Overview
+
+LifeHash is a method of hash visualization based on Conway's Game of Life that creates beautiful icons that are deterministic, yet distinct and unique given the input data.
+
+The basic concept is to take a SHA256 hash of the input data (which can be any data including another hash) and then use the 256-bit digest as a 16x16 pixel "seed" for running the cellular automata known as [Conway’s Game of Life](https://en.wikipedia.org/wiki/Conway's_Game_of_Life).
+
+After the pattern becomes stable (or begins repeating) the resulting history is used to compile a grayscale image of all the states from the first to last generation. Using Game of Life provides visual structure to the resulting image, even though it was seeded with entropy.
+
+Some bits of the initial hash are then used to deterministically apply symmetry and color to the icon to add beauty and quick recognizability.
+
+View the LifeHash explainer video for more details:
+
+[![LifeHash Explainer on YouTube](Art/title-card.jpg)](https://www.youtube.com/watch?v=cu0K__KLxKo)
+
+See a LifeHash demo at [LifeHash.info](https://lifehash.info/).
 
 ## Additional Information
 
