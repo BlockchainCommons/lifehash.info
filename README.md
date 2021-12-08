@@ -32,6 +32,24 @@ The following files contain more information about LifeHash:
 
 * [**Use Cases**](https://github.com/BlockchainCommons/lifehash.info/blob/shannona-lifehash-nexus/Nexus-Docs/Use-Cases.md) — Why use LifeHash?
 
+## Implementations
+
+Reference libraries are available in a variety of libraries. The C/C++ implementation considered the "canonical" implementation and should be suitable for binding to other languages such as Java, Python, and cross-compilation into WebAssembly. In order to work from a single main codebase, we expect that implementation to eventually replace the pure Swift implementation.
+
+| Type | Name | Language | Note |
+|------|------|----------|------|
+| Reference | [bc-lifehash](https://github.com/BlockchainCommons/bc-lifehash) | C++/C
+| Reference | [LifeHash](https://github.com/BlockchainCommons/LifeHash) | Swift
+| Reference | [LifeHash](https://github.com/BlockchainCommons/LifeHash) | Mathematica/Wolfram Language | `version1` only
+
+## Command-Line Tools
+
+Command-line tools demonstrate our reference libraries by generating LifeHash images as PNG files.
+
+| Name | Language |
+| [lifehash-cli](https://github.com/BlockchainCommons/bc-lifehash-cli) | C++ |
+| [LifeHashTool](https://github.com/BlockchainCommons/LifeHashTool) | Swift |
+
 ## Gordian Principles
 
 **LifeHash** is a reference specification meant to display the [Gordian Principles](https://github.com/BlockchainCommons/Gordian#gordian-principles), which are philosophical and technical underpinnings to Blockchain Commons' Gordian technology. This includes:
