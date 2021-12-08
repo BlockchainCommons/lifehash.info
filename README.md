@@ -31,6 +31,7 @@ See a LifeHash demo at [LifeHash.info](https://lifehash.info/).
 The following files contain more information about LifeHash:
 
 * [**Use Cases**](https://github.com/BlockchainCommons/lifehash.info/blob/shannona-lifehash-nexus/Nexus-Docs/Use-Cases.md) — Why use LifeHash?
+* [**Tips**](Nexus-Docs/Tips.md) — Advice for presenting and using LifeHashes.
 
 ## Implementations
 
