@@ -20,6 +20,6 @@ git commit -m 'deploy'
 # git push -f git@github.com:<USERNAME>/<USERNAME>.github.io.git master
 
 # if you are deploying to https://<USERNAME>.github.io/<REPO>
-git push -f git@github.com:BlockchainCommons/lifehash-web.git master
+git push -f git@github.com:BlockchainCommons/lifehash.info.git master
 
 cd -

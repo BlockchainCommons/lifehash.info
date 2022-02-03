@@ -18,8 +18,11 @@
   </h3>
   <div class="explanation">
     <p>
-      This is a live demonstration of the <a href="https://github.com/BlockchainCommons/bc-lifehash" target="_blank">LifeHash</a> visual hash algorithm running in the web browser.
-      It uses the reference C++ implementation compiled to <a href="https://webassembly.org/" target="_blank">WebAssembly</a>.
+      This is a live demonstration of the
+      <a href="https://github.com/BlockchainCommons/lifehash.info" target="_blank">LifeHash</a>
+      visual hash algorithm running in the web browser. It uses the reference
+      <a href="https://github.com/BlockchainCommons/bc-lifehash" target="_blank">C++ implementation</a> compiled to
+      <a href="https://webassembly.org/" target="_blank">WebAssembly</a>.
     </p>
   </div>
 
