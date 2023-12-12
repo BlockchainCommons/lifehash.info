@@ -71,7 +71,7 @@
   >
 
   <p>
-    Also see our < href="https://developer.blockchaincommons.com/lifehash/">LifeHash Developer page</a> and the info on the <a href="https://developer.blockchaincommons.com/oib/">Object Identity Block (OIB)</a>.
+    Also see our <a href="https://developer.blockchaincommons.com/lifehash/">LifeHash Developer page</a> and the info on the <a href="https://developer.blockchaincommons.com/oib/">Object Identity Block (OIB)</a>.
   </p>
   <div class="explanation">
     <h3 class="section">We care about your privacy</h3>
