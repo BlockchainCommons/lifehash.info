@@ -26,6 +26,8 @@ View the LifeHash explainer video for more details:
 
 See a LifeHash demo at [LifeHash.info](https://lifehash.info/).
 
+Also see our [LifeHash Developer page](https://developer.blockchaincommons.com/lifehash/) and the info on the [Object Identity Block (OIB)](https://developer.blockchaincommons.com/oib/).
+
 ## Additional Information
 
 The following files contain more information about LifeHash:
