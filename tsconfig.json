@@ -13,6 +13,8 @@
      * Note that setting allowJs false does not prevent the use
      * of JS in `.svelte` files.
      */
+    "verbatimModuleSyntax": true,
+    "ignoreDeprecations": "5.0",
     "allowJs": true,
     "checkJs": true
   },
